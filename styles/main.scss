@@ -1,0 +1,33 @@
+/* main.scss */
+.custom-typography {
+  font-family: "Poppins", sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+}
+
+.custom-textfield {
+  .MuiOutlinedInput-notchedOutline {
+    border: none !important;
+  }
+  .MuiOutlinedInput-input {
+    padding: 0px !important;
+  }
+
+  .MuiOutlinedInput-root {
+    width: 80% !important;
+    border-radius: 10px !important;
+    height: 35px !important;
+    border: 1px solid #d9d9d9 !important;
+    font-size: 13px !important;
+    font-family: "Poppins", sans-serif !important;
+    padding: 10px 0px 10px 10px !important;
+  }
+}
+
+.icon-button {
+  color: black !important;
+  font-family: Poppins, sans-serif !important;
+  font-weight: bold !important;
+  border-radius: 10px !important;
+  font-size: 12px !important;
+}
