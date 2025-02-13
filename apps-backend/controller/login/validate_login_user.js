@@ -33,7 +33,7 @@ const validate_login_user = async (req, res) => {
         process.env.NODE_ENV === "production" &&
         process.env.NODE_ENV === "development", // Secure cookies in production
       maxAge,
-      // sameSite: "None", // Prevent CSRF
+      sameSite: "Lax", // Prevent CSRF
     });
     return res.status(200).json({ success: true, message: "Login successful" });
   } catch (error) {
