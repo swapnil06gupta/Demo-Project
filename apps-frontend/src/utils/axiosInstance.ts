@@ -10,9 +10,6 @@ if (!apiUrl) {
 
 const axiosInstance = axios.create({
   baseURL: apiUrl, // Use the environment variable for the base URL
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
 
 export default axiosInstance;
