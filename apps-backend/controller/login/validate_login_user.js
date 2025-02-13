@@ -27,10 +27,11 @@ const validate_login_user = async (req, res) => {
     const token = generateToken(user);
     const { exp } = jwt.decode(token);
     const maxAge = exp * 1000 - Date.now();
-    console.log(maxAge, "maxxxxxage");
     res.cookie("token", token, {
       httpOnly: false, // Cannot be accessed by JavaScript
-      secure: process.env.NODE_ENV === "development", // Secure cookies in production
+      secure:
+        process.env.NODE_ENV === "production" &&
+        process.env.NODE_ENV === "development", // Secure cookies in production
       maxAge,
       sameSite: "Strict", // Prevent CSRF
     });

@@ -3,13 +3,13 @@ const app = express();
 const routes = require("./routers/index");
 const cors = require("cors");
 const mongoose = require("mongoose");
-require("dotenv").config({ path: ".env.dev" });
+require("dotenv").config();
 
 app.use(express.json());
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // Replace with the actual origin of your client app
+    origin: process.env.CLIENT_SIDE_URL, // Replace with the actual origin of your client app
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
     credentials: true, // Enable credentials (cookies) to be sent
