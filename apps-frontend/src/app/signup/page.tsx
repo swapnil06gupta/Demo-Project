@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import Grid from "@mui/material/Grid2";
-import axios from "axios";
 import "@fontsource/poppins";
 import "../../../styles/main.scss";
 import { FieldValues, useForm } from "react-hook-form";
@@ -23,6 +22,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useBaseStore } from "@/store/basicStore";
 import { useEffect } from "react";
 import { showLoader } from "../../../Common/loader";
+import axiosInstance from "@/utils/axiosInstance";
 
 const fieldSchema = z.object({
   name: z
@@ -65,7 +65,7 @@ export default function signup() {
   const submitSignUp = async (data: FieldValues) => {
     setLoader(true);
     try {
-      await axios.post("http://localhost:8080/app/signup", data);
+      await axiosInstance.post("/app/login", data);
       reset();
       routes.push("/about");
     } catch (err) {
