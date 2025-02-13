@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Button, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { showLoader } from "../../Common/loader";
 import { useBaseStore } from "@/store/basicStore";
+import axiosInstance from "@/Utils/axiosInstance";
 
 const Home: React.FC = () => {
   const [message, setMessage] = useState<string>("");
@@ -15,8 +15,12 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8080/app");
-      setMessage(response?.data?.message);
+      try {
+        const response = await axiosInstance.get("/app");
+        setMessage(response?.data?.message);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
     fetchData();
