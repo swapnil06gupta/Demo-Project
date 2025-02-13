@@ -7,7 +7,6 @@ const createUserByPost = async (req, res) => {
     const randomNumbers = Math.floor(100 + Math.random() * 900);
     const name = `${data.name}@${randomNumbers}`;
     const hashedPassword = await bcrypt.hash(data.password, 10);
-    console.log(hashedPassword, "1111111111");
     await signupModal.create({
       name: data.name,
       user_email: data.email,
