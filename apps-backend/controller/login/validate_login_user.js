@@ -30,8 +30,6 @@ const validate_login_user = async (req, res) => {
     console.log(process.env.CLIENT_SIDE_URL, "before cookies");
     res.cookie("token", token, {
       httpOnly: true, // Cannot be accessed by JavaScript
-      sameSite: "None", // Prevent CSRF
-      secure: false,
       maxAge,
     });
     console.log("after cookies");
