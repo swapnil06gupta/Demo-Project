@@ -30,9 +30,10 @@ const validate_login_user = async (req, res) => {
     console.log(process.env.CLIENT_SIDE_URL, "before cookies");
     res.cookie("token", token, {
       httpOnly: true, // Cannot be accessed by JavaScript
-      secure: process.env.NODE_ENV === "production",
-      maxAge,
       sameSite: "None", // Prevent CSRF
+      secure: false,
+      maxAge,
+      domain: ".vercel.app",
     });
     console.log("after cookies");
     return res.status(200).json({ success: true, message: "Login successful" });
