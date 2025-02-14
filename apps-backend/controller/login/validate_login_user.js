@@ -32,6 +32,7 @@ const validate_login_user = async (req, res) => {
       secure: process.env.NODE_ENV === "production",
       maxAge,
       sameSite: "None", // Prevent CSRF
+      domain: process.env.CLIENT_SIDE_URL,
     });
     return res.status(200).json({ success: true, message: "Login successful" });
   } catch (error) {
