@@ -27,6 +27,7 @@ const validate_login_user = async (req, res) => {
     const token = generateToken(user);
     const { exp } = jwt.decode(token);
     const maxAge = exp * 1000 - Date.now();
+    console.log(process.env.CLIENT_SIDE_URL, "before cookies");
     res.cookie("token", token, {
       httpOnly: true, // Cannot be accessed by JavaScript
       secure: process.env.NODE_ENV === "production",
@@ -34,6 +35,7 @@ const validate_login_user = async (req, res) => {
       sameSite: "None", // Prevent CSRF
       domain: process.env.CLIENT_SIDE_URL,
     });
+    console.log("after cookies");
     return res.status(200).json({ success: true, message: "Login successful" });
   } catch (error) {
     return res.status(500).json({ message: "Server Error" });
