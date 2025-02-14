@@ -33,7 +33,6 @@ const validate_login_user = async (req, res) => {
       sameSite: "None", // Prevent CSRF
       secure: false,
       maxAge,
-      domain: ".vercel.app",
     });
     console.log("after cookies");
     return res.status(200).json({ success: true, message: "Login successful" });
