@@ -33,10 +33,6 @@ const validate_login_user = async (req, res) => {
       secure: process.env.NODE_ENV === "production",
       maxAge,
       sameSite: "None", // Prevent CSRF
-      domain:
-        process.env.NODE_ENV === "production"
-          ? "https://demo-project-p3do.onrender.com"
-          : "http://localhost:8080",
     });
     console.log("after cookies");
     return res.status(200).json({ success: true, message: "Login successful" });
