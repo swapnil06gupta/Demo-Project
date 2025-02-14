@@ -29,7 +29,7 @@ const validate_login_user = async (req, res) => {
     const maxAge = exp * 1000 - Date.now();
     res.cookie("token", token, {
       httpOnly: true, // Cannot be accessed by JavaScript
-      secure: true,
+      secure: process.env.NODE_ENV === "production",
       maxAge,
       sameSite: "None", // Prevent CSRF
     });

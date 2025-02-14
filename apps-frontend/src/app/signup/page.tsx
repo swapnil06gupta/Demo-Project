@@ -47,6 +47,7 @@ export default function signup() {
 
   useEffect(() => {
     setLoader(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {
@@ -65,7 +66,12 @@ export default function signup() {
   const submitSignUp = async (data: FieldValues) => {
     setLoader(true);
     try {
-      await axiosInstance.post("/app/login", data);
+      await axiosInstance.post("/app/signup", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
       reset();
       routes.push("/about");
     } catch (err) {

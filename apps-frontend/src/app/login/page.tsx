@@ -38,6 +38,7 @@ export default function login() {
 
   useEffect(() => {
     setLoader(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {
@@ -53,6 +54,9 @@ export default function login() {
     setLoader(true);
     try {
       await axiosInstance.post("/app/login", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
         withCredentials: true,
       });
       reset();
