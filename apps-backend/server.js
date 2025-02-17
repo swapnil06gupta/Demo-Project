@@ -8,13 +8,10 @@ require("dotenv").config();
 app.use(express.json());
 app.use(
   cors({
-    origin: [
-      process.env.CLIENT_SIDE_URL,
-      "https://demo-project-p3do.onrender.com",
-    ], // Replace with the actual origin of your client app
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+    origin: process.env.CLIENT_SIDE_URL, // Replace with the actual origin of your client app
     credentials: true, // Enable credentials (cookies) to be sent
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+    allowedHeaders: ["Content-Type", "Authorization", "Set-Cookie"], // Allowed headers
   })
 );
 

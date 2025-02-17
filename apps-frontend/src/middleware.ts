@@ -5,6 +5,7 @@ export function middleware(req: NextRequest) {
   console.log("Middleware triggered!");
   // Get the JWT token from cookies
   const token = req.cookies.get("token");
+  console.log(token, "tokkkkk");
   const url = req.nextUrl.pathname;
 
   if (token && url === "/signup") {
