@@ -25,13 +25,15 @@ const validate_login_user = async (req, res) => {
         .json({ success: false, message: "Invalid password" });
     }
     const token = generateToken(user);
-    const { exp } = jwt.decode(token);
-    const maxAge = exp * 1000 - Date.now();
+    // const { exp } = jwt.decode(token);
+    // const maxAge = exp * 1000 - Date.now();
     console.log(process.env.CLIENT_SIDE_URL, "before cookies");
     res.cookie("token", token, {
       httpOnly: true, // Cannot be accessed by JavaScript
-      secure: process.env.NODE_ENV === "production",
-      maxAge,
+      secure:
+        process.env.NODE_ENV === "production" ||
+        process.env.NODE_ENV === "development",
+      maxAge: 3200000,
       sameSite: "None", // Prevent CSRF
     });
     console.log("after cookies");
